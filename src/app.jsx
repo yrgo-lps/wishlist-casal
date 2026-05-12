@@ -278,7 +278,7 @@ function SetupScreen({ onReady }) {
       if (err) throw err
       localStorage.setItem('couple_code', newCode)
       onReady({ code: newCode, name1: p1.trim(), name2: p2.trim() })
-    } catch { setError('Erro ao criar lista. Tente novamente.') }
+    } catch (err) { setError('Erro: ' + (err?.message || JSON.stringify(err))) }
     finally { setLoading(false) }
   }
 
